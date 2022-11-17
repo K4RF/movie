@@ -1,0 +1,36 @@
+{{>layouts/header}}
+<div class="container">
+
+    {{#movieEntity}}
+        <div style="margin-bottom: 100px;"></div>
+
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{imgUrl}}" alt="moviePoster" name="poster" class="detail-card-img"> <!-- 이부분을 업로드한 사진으로 넣고싶은데-->
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">{{title}}</h1>
+                        <p class="card-text"><small class="text-muted">감독: {{director}}</small></p>
+                        <p class="card-text"><small class="text-muted">주연: {{actor}}</small></p>
+                        <p class="card-text"><small class="text-muted">상영시간: {{movieTime}}</small></p>
+                        <p class="card-text"><small class="text-muted">영화등급: {{grade}}</small></p>
+
+                        <hr>
+                        <p class="card-text review-text">{{content}}</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-bottom: 100px;"></div>
+
+    {{/movieEntity}}
+
+    {{>grades/_grades}}
+    <div style="margin-bottom: 100px;"></div>
+
+</div>
+{{>layouts/footer}}

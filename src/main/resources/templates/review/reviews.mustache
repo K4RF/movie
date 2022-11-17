@@ -1,0 +1,31 @@
+{{>layouts/header}}
+<div style="margin-bottom: 100px;"></div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">영화</th>
+            <th scope="col">제목</th>
+            <th scope="col">글쓴이/날짜</th>
+            <th scope="col">별점</th>
+            <th scope="col">조회</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#reviewEntityList}}
+            <tr>
+                <th scope="row">{{movieTitle}}</th>
+                <td><a href="/review/{{id}}">{{title}}</a></td>
+                <td>{{writer}}</td>
+                <td>{{score}}</td>
+                <td>{{views}}</td>
+            </tr>
+        {{/reviewEntityList}}
+        </tbody>
+    </table>
+    <div style="margin-bottom: 10px;"></div>
+    <button type="button" class="btn btn-outline-secondary"><a href="/review/new">새 리뷰 쓰기</a></button>
+    <div style="margin-bottom: 100px;"></div>
+
+</div>
+{{>layouts/footer}}

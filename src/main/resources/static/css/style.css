@@ -1,0 +1,62 @@
+body{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+.jumbotron{
+    margin-bottom: 0px;
+}
+.navbar{
+    background: #000000b3 !important;
+}
+
+.main-img{
+    width: 100%;
+}
+.card-img{
+    height: 300px;
+}
+.detail-card-img{
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+    font-size: 22px;
+}
+a:hover{
+    text-decoration: none;
+    color:black;
+    cursor: pointer;
+}
+.span-badge{
+    font-size: 20px;
+}
+.review-text{
+    font-size: 20px;
+}
+.jumbotron-fluid{
+    background: #000000b3;
+    color: white;
+}
+.navbar{
+    height: 80px;
+}
+.nav-home{
+    font-size: 22px;
+    margin-left: 15px;
+    color:white !important;
+}
+.nav-link{
+    font-size: 18px;
+    margin-left: 15px;
+    color:white !important;
+}
+th, td{
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 1px solid #ddd;
+}

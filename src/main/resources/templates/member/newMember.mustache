@@ -1,0 +1,34 @@
+{{>layouts/header}}
+
+<div class="container">
+
+    <div style="margin-bottom: 100px;"></div>
+    <h1> 회원가입</h1>
+    <div style="margin-bottom: 100px;"></div>
+    <form class="container" action="/member/create" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">이름</span>
+            </div>
+            <input type="text" class="form-control" placeholder="name" aria-label="Username" aria-describedby="basic-addon1" name="name">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">이메일</span>
+            </div>
+            <input type="email" class="form-control" name="email">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">비밀번호</span>
+            </div>
+            <input type="password" class="form-control" name="password">
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">가입하기</button>
+        <a class="btn btn-outline-secondary" href="/member/login">back</a>
+    </form>
+</div>
+<div style="margin-bottom: 100px;"></div>
+
+{{>layouts/footer}}

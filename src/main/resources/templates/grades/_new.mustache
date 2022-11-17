@@ -1,0 +1,49 @@
+<div class="card m-2" id="grades-new">
+    <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">이름</label>
+                <input class="form-control form-controll-sm" id="new-grade-title">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">한줄평</label>
+                <textarea class="form-control form-controll-sm" rows="3" id="new-grade-body"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">평점</label>
+                <input class="form-control form-controll-sm" id="new-grade-grade">
+            </div>
+            {{#movieEntity}}
+                <input type="hidden" id="new-grade-movie-id" value="{{id}}">
+            {{/movieEntity}}
+            <button type="button" class="btn btn-outline-info btn-sm" id="grade-create-btn">작성하기</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    {
+        const gradeCreateBtn = document.querySelector("#grade-create-btn");
+        gradeCreateBtn.addEventListener("click", function(){
+            const grade = { // JS객체로 만들기
+                title: document.querySelector("#new-grade-title").value,
+                body: document.querySelector("#new-grade-body").value,
+                grade: document.querySelector("#new-grade-grade").value,
+                movie_id: document.querySelector("#new-grade-movie-id").value
+            };
+            console.log(grade);
+            const url = "/api/movies/" + grade.movie_id + "/grades";
+            fetch(url, {
+                method : "post",
+                body: JSON.stringify(grade), // JS객체를 JSON으로 변환
+                headers: {
+                    "Content-Type" : "application/json" // headers 부분에 명시할 내용 (json타입이다)
+                }
+            }).then(response => {
+                const msg = (response.ok) ? "댓글이 등록되었습니다" : "댓글 등록 실패";
+                alert(msg);
+                window.location.reload();
+            });
+        });
+    }
+</script>

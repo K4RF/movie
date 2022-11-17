@@ -1,0 +1,139 @@
+<div id="grades-list">
+
+    <h2>댓글</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">작성자</th>
+            <th scope="col">내용</th>
+            <th scope="col">평점</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        {{#gradesDtos}} <!-- 이 DTO를 모델에 등록해줘야만 화면에 나타남 MovieController.detailMovie() -->
+            <tbody>
+            <tr id="grades-{{id}}">
+                <td scope="row">{{title}}</td>
+                <td scope="row">{{body}}</td>
+                <td scope="row">{{grade}}</td>
+                <td>
+                    <button type="button"
+                            class="btn btn-sm btn-outline-info"
+                            data-bs-toggle="modal"
+                            data-bs-target="#grade-edit-modal"
+                            data-bs-id="{{id}}"
+                            data-bs-title="{{title}}"
+                            data-bs-body="{{body}}"
+                            data-bs-grade="{{grade}}"
+                            data-movie-id="{{movieId}}"
+                    >수정</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger grade-delete-btn"
+                            data-grade-id="{{id}}">
+                        삭제</button>
+                </td>
+            </tr>
+            </tbody>
+        {{/gradesDtos}}
+    </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="grade-edit-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">내용 수정</h5>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">이름</label>
+                        <input class="form-control form-control-sm" id="edit-grade-title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">한줄평</label>
+                        <textarea class="form-control form-control-sm" rows="3" id="edit-grade-body"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">평점</label>
+                        <input class="form-control form-control-sm" id="edit-grade-grade">
+                    </div>
+                    <input type="hidden" id="edit-grade-id">
+                    <input type="hidden" id="edit-grade-movie-id">
+                    <button type="button" class="btn btn-outline-info btn-sm" id="grade-update-btn">수정하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 수정 모달 이벤트 -->
+<script>
+    {
+        const gradeEditModal = document.querySelector("#grade-edit-modal");
+        gradeEditModal.addEventListener("show.bs.modal", function(event){
+            const triggerBtn = event.relatedTarget;
+            const id = triggerBtn.getAttribute("data-bs-id");
+            const title = triggerBtn.getAttribute("data-bs-title");
+            const body = triggerBtn.getAttribute("data-bs-body");
+            const grade = triggerBtn.getAttribute("data-bs-grade");
+            const movieId = triggerBtn.getAttribute("data-bs-movie-id");
+            document.querySelector("#edit-grade-title").value = title;
+            document.querySelector("#edit-grade-body").value = body;
+            document.querySelector("#edit-grade-grade").value = grade;
+            document.querySelector("#edit-grade-id").value = id;
+            document.querySelector("#edit-grade-movie-id").value = movieId;
+            const gradeUpdateBtn = document.querySelector("#grade-update-btn");
+            gradeUpdateBtn.addEventListener("click", function(){
+                const grade = {
+                    id: document.querySelector("#edit-grade-id").value,
+                    title: document.querySelector("#edit-grade-title").value,
+                    body: document.querySelector("#edit-grade-body").value,
+                    grade: document.querySelector("#edit-grade-grade").value,
+                    movie_id: document.querySelector("#edit-grade-movie-id").value
+                };
+                const url = "/api/grades/" + grade.id;
+                fetch(url, {
+                    method: "PATCH",
+                    body: JSON.stringify(grade),
+                    headers: {
+                        "Content-type": "application/json"
+                    }
+                }).then(response => {
+                    const msg = (response.ok) ? "내용이 수정되었습니다" : "수정 실패";
+                    alert(msg);
+                    window.location.reload();
+                });
+            });
+        });
+    }
+</script>
+
+<!-- 삭제버튼 -->
+<script>
+    {
+        const gradeDeleteBtns = document.querySelectorAll(".grade-delete-btn");
+        gradeDeleteBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+                const gradeDeleteBtn = event.srcElement; //이 이벤트를 발생시킨 대상을 가져와서 변수화
+                const gradeId = gradeDeleteBtn.getAttribute("data-grade-id"); // 삭제할 댓글 id가져오기
+                console.log(`삭제버튼클릭: ${gradeId}번 한줄평 내용`);
+                const url = "/api/grades/" + gradeId;
+                fetch(url, {
+                    method : "DELETE"
+                }).then(response => {
+                    if(!response.ok) {
+                        alert("댓글 삭제 실패");
+                        return;
+                    }
+                    const target = document.querySelector(`#grades-${gradeId}`);
+                    target.remove();
+                });
+            });
+        });
+    }
+</script>

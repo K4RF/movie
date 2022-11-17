@@ -1,0 +1,39 @@
+{{>layouts/header}}
+{{#reviewEntity}}
+
+    <div style="margin-bottom: 100px;"></div>
+
+
+
+    <div class="container">
+
+        <span class="badge bg-secondary span-badge" style="float:right">{{movieTitle}}</span>
+        <span class="badge bg-danger span-badge" style="float:right">{{score}}</span>
+
+        <div style="clear:both"></div>
+        <div style="margin-bottom: 10px;"></div>
+
+
+        <h1 style="float:left">{{title}}</h1>
+        <p class="review-text" style="float:right">{{writer}}</p>
+        <div style="clear:both"></div>
+
+        <hr>
+
+        <p class="review-text">{{content}}</p>
+
+
+        <div style="margin-bottom: 100px;"></div>
+
+
+        <a class="btn btn-outline-secondary" href="/review/edit/{{id}}">수정</a>
+        <a class="btn btn-outline-secondary" href="/review/delete/{{id}}">삭제</a>
+        <a class="btn btn-outline-secondary" href="/review">Back</a>
+
+    </div>
+
+    <div style="margin-bottom: 100px;"></div>
+
+{{/reviewEntity}}
+
+{{>layouts/footer}}

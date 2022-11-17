@@ -1,0 +1,73 @@
+{{>layouts/header}}
+
+<div class="container">
+
+    <div style="margin-bottom: 100px;"></div>
+    <h1> 영화 등록 </h1>
+    <div style="margin-bottom: 10px;"></div>
+
+    <form class="container" action="/detail/create" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">title</span>
+            </div>
+            <input type="text" class="form-control" placeholder="title" aria-label="Username" aria-describedby="basic-addon1" name="title">
+        </div>
+
+        <!--        <div class="input-group mb-3">-->
+        <!--            <div class="input-group-prepend">-->
+        <!--                <span class="input-group-text" id="basic-addon2">imgUrl</span>-->
+        <!--            </div>-->
+        <!--            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="imgUrl">-->
+        <!--        </div>-->
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">director</span>
+            </div>
+            <input type="text" class="form-control" name="director">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">actor</span>
+            </div>
+            <input type="text" class="form-control" name="actor">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">movieTime</span>
+            </div>
+            <input type="text" class="form-control" name="movieTime">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">grade</span>
+            </div>
+            <input type="text" class="form-control" name="grade">
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">content</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" name="content"></textarea>
+        </div>
+        <div style="margin-bottom: 10px;"></div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">movie poster</span>
+            </div>
+            <input type="file" class="form-control" name="imgFile">
+        </div>
+
+        <button type="submit" class="btn btn-outline-secondary">확인</button>
+        <a class="btn btn-outline-secondary" href="/detail">back</a>
+    </form>
+</div>
+<div style="margin-bottom: 100px;"></div>
+
+{{>layouts/footer}}

@@ -1,0 +1,37 @@
+{{>layouts/header}}
+
+
+<div style="margin-bottom: 100px;"></div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">번호</th>
+            <th scope="col">영화제목</th>
+            <th scope="col">상영시간</th>
+            <th scope="col">상영등급</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#movieEntityList}}
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td> <a href="/detail/{{id}}"> {{title}} </a> </td>
+                <td>{{movieTime}}</td>
+                <td>{{grade}}</td>
+            </tr>
+        {{/movieEntityList}}
+        </tbody>
+    </table>
+    <div style="margin-bottom: 10px;"></div>
+
+    <button type="button" class="btn btn-outline-secondary"><a href="/detail/new">새 영화 등록</a></button>
+
+</div>
+<!--등록일 추가 예정-->
+
+
+
+<div style="margin-bottom: 100px;"></div>
+
+{{>layouts/footer}}

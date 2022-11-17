@@ -1,0 +1,45 @@
+{{>layouts/header}}
+<div class="container">
+
+    <div style="margin-bottom: 100px;"></div>
+    <h1> 리뷰 수정 </h1>
+    <div style="margin-bottom: 10px;"></div>
+    {{#reviewEntity}}
+        <form class="container" action="/review/update" method="post">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">title</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="title" value="{{title}}">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">writer</span>
+                </div>
+                <input type="text" class="form-control" name="writer" value="{{writer}}">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">score</span>
+                </div>
+                <input type="text" class="form-control" name="score" value="{{score}}">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">content</span>
+                </div>
+                <input type="text" class="form-control" name="content" value="{{content}}">
+            </div>
+            <div style="margin-bottom: 10px;">
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" name="movieTitle" value="{{movieTitle}}">
+                <input type="hidden" name="views" value="{{views}}">
+            </div>
+            <button type="submit" class="btn btn-outline-secondary">확인</button>
+            <a class="btn btn-outline-secondary" href="/review/{{id}}">back</a>
+        </form>
+    {{/reviewEntity}}
+</div>
+<div style="margin-bottom: 100px;"></div>
+{{>layouts/footer}}

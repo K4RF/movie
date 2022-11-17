@@ -1,0 +1,54 @@
+{{>layouts/header}}
+<div class="container">
+
+    <div style="margin-bottom: 100px;"></div>
+    <h1> 리뷰 등록 </h1>
+    <div style="margin-bottom: 10px;"></div>
+
+    <form class="container" action="/review/create" method="post">
+        <div>
+
+            <select name="movieId" class="form-select" aria-label="Default select example">
+
+                <option>영화를 선택하세요</option>
+                {{#movieEntityList}}
+                    <option value="{{id}}">{{title}}</option>
+                {{/movieEntityList}}
+            </select>
+
+
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">title</span>
+            </div>
+            <input type="text" class="form-control" placeholder="리뷰 제목" aria-label="Username" aria-describedby="basic-addon1" name="title">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">writer</span>
+            </div>
+            <input type="text" placeholder="글쓴이" class="form-control" name="writer">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">score</span>
+            </div>
+            <input type="text" placeholder="숫자만 적어주세요(0~5)" class="form-control" name="score">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">content</span>
+            </div>
+            <input type="text" placeholder="리뷰 내용" class="form-control" name="content">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="hidden" name="views" value="0"> <!-- 조회수 값 초기화를 위한 0 -->
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">확인</button>
+        <a class="btn btn-outline-secondary" href="/review">back</a>
+    </form>
+</div>
+<div style="margin-bottom: 100px;"></div>
+{{>layouts/footer}}

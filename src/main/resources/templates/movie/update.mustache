@@ -1,0 +1,62 @@
+{{>layouts/header}}
+
+{{#movieEntity}}
+    <form class="container" action="/detail/create" method="post">
+        <input name="id" type="hidden" value="{{id}}"/>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">title</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username"
+                   aria-label="Username" aria-describedby="basic-addon1" name="title" value="{{title}}">
+        </div>
+
+        <label for="basic-url">imgUrl</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">https://example.com/users/</span>
+            </div>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="imgUrl" value="{{imgUrl}}">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">director</span>
+            </div>
+            <input type="text" class="form-control" name="director" value="{{director}}">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">actor</span>
+            </div>
+            <input type="text" class="form-control" name="actor" value="{{actor}}">
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">content</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" name="content">{{content}}</textarea>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">movieTime</span>
+            </div>
+            <input type="text" class="form-control" name="movieTime" value="{{movieTime}}">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">grade</span>
+            </div>
+            <input type="text" class="form-control" name="grade" value="{{grade}}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">확인</button>
+    </form>
+
+{{/movieEntity}}
+
+{{>layouts/footer}}

@@ -27,8 +27,7 @@ public class MemberController {
 
     @PostMapping("/member/create")
     public String createMember(MemberDto memberDto) throws Exception{
-        // movieId title writer score content
-        MemberEntity memberEntity = memberService.create(memberDto);
+        MemberEntity memberEntity = memberService.create(memberDto, passwordEncoder);
         return "member/memberLogin";
     }
     @GetMapping(value = "/member/login")
